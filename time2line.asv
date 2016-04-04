@@ -61,16 +61,16 @@ if exist('textdata', 'var')
     % Sort by centers of gravity
     % genocogs = zeros(length(genos_unique), 1);
     
-    % Sort by bouts after 2.5 hours
-    geno_nbouts25 = zeros(length(genos_unique), 1);
+    % Sort by bouts after 
+    % genocogs = zeros(length(genos_unique), 1);
     
     % Calculate the centers of gravity per genotype
     for i = 1 : length(genos_unique)
-        geno_nbouts25(i) = mean(nbouts25(genoinx == i));
+        genocogs(i) = mean(cogs(genoinx == i));
     end
     
     % Find the order
-    [~, genoorder] = sort(geno_nbouts25,'descend');
+    [~, genoorder] = sort(genocogs,'descend');
     
     % Initiate new row order
     roworder = zeros(nsamples,1);
