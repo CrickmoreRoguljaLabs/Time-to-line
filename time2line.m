@@ -18,8 +18,8 @@ if nargin < 1
     [fn, filepath] = uigetfile('.xlsx');
     [data,textdata] = xlsread(fullfile(filepath,fn));
     
-    % Throw out the first 2 columns
-    data2 = data(:,3:end);
+    % Throw out the first 4 columns
+    data2 = data(:,5:end);
 end
 
 % If no data are provided, get the data using the path
@@ -27,8 +27,8 @@ if isempty(data2)
     % Read in data
     [data,textdata] = xlsread(fullfile(filepath,fn));
     
-    % Throw out the first 2 columns
-    data2 = data(:,3:end);
+    % Throw out the first 5 columns
+    data2 = data(:,5:end);
 end
 
 
@@ -145,7 +145,7 @@ for i =1 : nsamples
     end
     
     % Write out the genotypes
-    if exist('genos_unique', 'var') && novelgeno(i) == 1
+    if length(genos_unique) > 1 && novelgeno(i) == 1
         text2display = genos_unique{current_genoinx};
         text(265, i, text2display(end-6:end),...
             'Color', colormat(current_genoinx,:), 'FontSize', 11);
